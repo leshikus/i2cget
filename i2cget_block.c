@@ -53,11 +53,11 @@ static int check_funcs(int file, int daddress, int pec)
             "functionality matrix: %s\n", strerror(errno));
         return -1;
     }
-
+/*
     if (!(funcs & I2C_FUNC_SMBUS_READ_BLOCK_DATA)) {
         fprintf(stderr, MISSING_FUNC_FMT, "SMBus read block");
         return -1;
-    }
+    }*/
 
     if (pec
      && !(funcs & (I2C_FUNC_SMBUS_PEC | I2C_FUNC_I2C))) {
@@ -97,11 +97,11 @@ int main(int argc, char *argv[])
     i2cbus = lookup_i2c_bus(argv[flags+1]);
     if (i2cbus < 0)
         help();
-    address = parse_i2c_address(argv[flags+2]);
+    address = parse_i2c_address(argv[flags + 2]);
     if (address < 0)
         help();
     if (argc > flags + 3) {
-        daddress = strtol(argv[flags+3], &end, 0);
+        daddress = strtol(argv[flags + 3], &end, 0);
         if (*end || daddress < 0 || daddress > 0xff) {
             fprintf(stderr, "Error: Data address invalid!\n");
             help();
@@ -129,6 +129,8 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+    printf("i2cbus = %i, address = %i, daddress = %i, blocksize = %i\n", i2cbus, address, daddress, blocksize);
+
 
     unsigned char values[MAX_BLOCK_SIZE]; 
     res = i2c_smbus_read_i2c_block_data(file, daddress, blocksize, values);
@@ -142,12 +144,20 @@ int main(int argc, char *argv[])
 
     printf("0x");
 
-    int i;
-    for (i = 0; i < res; i++) {
-        printf("%2x", values[i]);
+    int i = res;
+    while (i > 0) {
+        printf("%02x", values[--i]);
     }
 
     printf("\n");
+
+
+    i = res;
+    while (i > 0) {
+        printf("%c", values[--i]);
+    }
+    printf("\n");
+
     exit(0);
 }
 
