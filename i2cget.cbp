@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="i2cget" />
+		<Option pch_mode="2" />
+		<Option compiler="linux_gcc_433_compiler" />
+		<Build>
+			<Target title="Arm433Debug">
+				<Option output="../bin/Arm433Debug/gs_i2c_dac" prefix_auto="1" extension_auto="0" />
+				<Option object_output="../obj/Arm433Debug/" />
+				<Option type="1" />
+				<Option compiler="linux_gcc_433_compiler" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Arm433Release">
+				<Option output="../bin/Arm433Release/gs_i2c_dac" prefix_auto="1" extension_auto="0" />
+				<Option object_output="../obj/Arm433Release/" />
+				<Option type="1" />
+				<Option compiler="linux_gcc_433_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Arm477Debug">
+				<Option output="../bin/Arm477Debug/gs_i2c_dac" prefix_auto="1" extension_auto="0" />
+				<Option object_output="../obj/Arm477Debug/" />
+				<Option type="1" />
+				<Option compiler="linux_gcc_477_compiler" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Arm477Release">
+				<Option output="../bin/Arm477Release/gs_i2c_dac" prefix_auto="1" extension_auto="0" />
+				<Option object_output="../obj/Arm477Release/" />
+				<Option type="1" />
+				<Option compiler="linux_gcc_477_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lrt" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" update_manifest="0" do_auto_increment="1" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
