@@ -118,12 +118,7 @@ static int confirm(const char *filename, int address, int size, int daddress,
         "read word data");
     if (pec)
         fprintf(stderr, "PEC checking enabled.\n");
-    fprintf(stderr, "Continue? [%s] ", dont ? "y/N" : "Y/n");
-    fflush(stderr);
-    if (!user_ack(!dont)) {
-        fprintf(stderr, "Aborting on user request.\n");
-        return 0;
-    }
+
     return 1;
 }
 
